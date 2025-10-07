@@ -4,7 +4,7 @@ from unittest.mock import patch
 
 import pytest
 
-from llm_config import (
+from config.llm_config import (
     get_llm_config,
     get_embedding_model_config,
     create_chat_model,
@@ -122,7 +122,7 @@ class TestGetEmbeddingModelConfig:
 class TestCreateChatModel:
     """Tests for create_chat_model function."""
 
-    @patch('llm_config.ChatModel.from_name')
+    @patch('command_line_agent.config.llm_config.ChatModel.from_name')
     def test_creates_watsonx_chat_model(self, mock_from_name):
         """Should create WatsonX chat model with correct parameters."""
         create_chat_model("watsonx", "ibm/granite-3-8b-instruct", temperature=0.7, max_tokens=2048)
@@ -131,7 +131,7 @@ class TestCreateChatModel:
         call_args = mock_from_name.call_args
         assert call_args[0][0] == "watsonx:ibm/granite-3-8b-instruct"
 
-    @patch('llm_config.ChatModel.from_name')
+    @patch('command_line_agent.config.llm_config.ChatModel.from_name')
     def test_creates_openai_chat_model(self, mock_from_name):
         """Should create OpenAI chat model with correct parameters."""
         create_chat_model("openai", "gpt-4", temperature=0.5)
@@ -140,7 +140,7 @@ class TestCreateChatModel:
         call_args = mock_from_name.call_args
         assert call_args[0][0] == "openai:gpt-4"
 
-    @patch('llm_config.ChatModel.from_name')
+    @patch('command_line_agent.config.llm_config.ChatModel.from_name')
     def test_creates_ollama_chat_model(self, mock_from_name):
         """Should create Ollama chat model with correct parameters."""
         create_chat_model("ollama", "llama3.2")
@@ -149,7 +149,7 @@ class TestCreateChatModel:
         call_args = mock_from_name.call_args
         assert call_args[0][0] == "ollama:llama3.2"
 
-    @patch('llm_config.ChatModel.from_name')
+    @patch('command_line_agent.config.llm_config.ChatModel.from_name')
     def test_creates_gemini_chat_model(self, mock_from_name):
         """Should create Gemini chat model with correct parameters."""
         create_chat_model("gemini", "gemini-pro")
@@ -158,7 +158,7 @@ class TestCreateChatModel:
         call_args = mock_from_name.call_args
         assert call_args[0][0] == "gemini:gemini-pro"
 
-    @patch('llm_config.ChatModel.from_name')
+    @patch('command_line_agent.config.llm_config.ChatModel.from_name')
     def test_passes_chat_model_parameters(self, mock_from_name):
         """Should pass ChatModelParameters to from_name."""
         create_chat_model("openai", "gpt-4", temperature=0.8, max_tokens=4096)

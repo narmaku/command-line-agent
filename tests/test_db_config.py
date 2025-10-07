@@ -2,7 +2,7 @@
 import os
 from unittest.mock import patch
 import pytest
-from db_config import DatabaseConfig, get_connection_string
+from config.db_config import DatabaseConfig, get_connection_string
 
 
 class TestDatabaseConfig:

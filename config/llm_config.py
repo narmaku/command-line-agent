@@ -111,10 +111,10 @@ def get_agent_instructions_file() -> str:
     """Get path to agent instructions file from environment variable.
     
     Returns:
-        str: Path to instructions file. Defaults to AGENT_INSTRUCTIONS.md in project root.
+        str: Path to instructions file. Defaults to prompts/linux_diagnostics_agent.md
     """
-    # Default to project root (3 levels up from this file)
-    default_path = str(Path(__file__).parent.parent.parent.parent / "AGENT_INSTRUCTIONS.md")
+    # Default to prompts directory (one level up from config/)
+    default_path = str(Path(__file__).parent.parent / "prompts" / "linux_diagnostics_agent.md")
     return os.getenv("AGENT_INSTRUCTIONS_FILE", default_path)
 
 

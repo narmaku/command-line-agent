@@ -6,8 +6,8 @@ from beeai_framework.backend.embedding import EmbeddingModel
 from beeai_framework.backend.vector_store import VectorStore
 from beeai_framework.tools.search.retrieval import VectorStoreSearchTool
 
-from ..config.db_config import get_connection_string
-from ..config.llm_config import get_embedding_model_config
+from config.db_config import get_connection_string
+from config.llm_config import get_embedding_model_config
 
 
 def create_embedding_model(provider: str, model: str, truncate_input_tokens: int = 500) -> EmbeddingModel:

@@ -2,13 +2,13 @@
 import os
 from unittest.mock import AsyncMock, MagicMock, patch
 import pytest
-from rag_integration import create_rag_tool, get_embedding_model, create_embedding_model
+from tools.rag_integration import create_rag_tool, get_embedding_model, create_embedding_model
 
 
 class TestCreateEmbeddingModel:
     """Tests for create_embedding_model function with multiple providers."""
 
-    @patch('rag_integration.EmbeddingModel.from_name')
+    @patch('command_line_agent.tools.rag_integration.EmbeddingModel.from_name')
     def test_creates_watsonx_embedding_model(self, mock_from_name):
         """Should create WatsonX embedding model."""
         create_embedding_model("watsonx", "ibm/slate-125m-english-rtrvr-v2")
@@ -18,7 +18,7 @@ class TestCreateEmbeddingModel:
             truncate_input_tokens=500
         )
 
-    @patch('rag_integration.EmbeddingModel.from_name')
+    @patch('command_line_agent.tools.rag_integration.EmbeddingModel.from_name')
     def test_creates_openai_embedding_model(self, mock_from_name):
         """Should create OpenAI embedding model."""
         create_embedding_model("openai", "text-embedding-3-small")
@@ -28,7 +28,7 @@ class TestCreateEmbeddingModel:
             truncate_input_tokens=500
         )
 
-    @patch('rag_integration.EmbeddingModel.from_name')
+    @patch('command_line_agent.tools.rag_integration.EmbeddingModel.from_name')
     def test_creates_ollama_embedding_model(self, mock_from_name):
         """Should create Ollama embedding model."""
         create_embedding_model("ollama", "nomic-embed-text")
@@ -38,7 +38,7 @@ class TestCreateEmbeddingModel:
             truncate_input_tokens=500
         )
 
-    @patch('rag_integration.EmbeddingModel.from_name')
+    @patch('command_line_agent.tools.rag_integration.EmbeddingModel.from_name')
     def test_creates_gemini_embedding_model(self, mock_from_name):
         """Should create Gemini embedding model."""
         create_embedding_model("gemini", "text-embedding-004")

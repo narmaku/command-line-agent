@@ -11,19 +11,22 @@ from beeai_framework.middleware.trajectory import GlobalTrajectoryMiddleware
 from beeai_framework.tools import Tool
 from beeai_framework.tools.think import ThinkTool
 
-from .config import (
+from config.llm_config import (
     create_chat_model,
-    create_event_observer,
     get_llm_config,
     get_llm_max_tokens,
     get_llm_temperature,
-    get_logger,
     get_memory_max_tokens,
-    is_debug_mode,
     load_agent_instructions,
+)
+from config.logging_config import (
+    create_event_observer,
+    get_logger,
+    is_debug_mode,
     print_clean_message,
 )
-from .tools import create_linux_tools, create_rag_tool
+from tools.mcp_linux_tools import create_linux_tools
+from tools.rag_integration import create_rag_tool
 
 
 async def create_troubleshooting_agent() -> RequirementAgent:
