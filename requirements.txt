@@ -1,0 +1,7 @@
+beeai-framework[rag,mcp]
+langchain-postgres
+psycopg[binary]
+python-dotenv
+pytest
+pytest-asyncio
+pytest-mock
